@@ -3,5 +3,10 @@ from django.shortcuts import render
 
 from django.http import HttpResponse
 
+import datetime
+from django.utils import timezone
+
 def index(request):
-    return HttpResponse("Hello, world! Today is 2019.04.01.(Mon) [index]")
+    dt = timezone.localtime()
+    now = dt.strftime("%Y.%m.%d. %H:%M:%S (%A)")
+    return HttpResponse("Hello, world! Now is " + now + " (UTC)")
